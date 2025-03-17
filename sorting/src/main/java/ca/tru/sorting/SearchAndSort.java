@@ -41,6 +41,10 @@ public class SearchAndSort {
     }
 
     public static <T extends Comparable<T>> void quickSort(T[] items) {
+        quickSort(items, 0, items.length-1);
+    }
+
+    public static <T extends Comparable<T>> void quickSort(T[] items, int min, int max){
 
     }
 
