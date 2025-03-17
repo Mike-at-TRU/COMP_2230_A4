@@ -2,6 +2,7 @@ package ca.tru.sorting;
 
 public class SearchAndSort {
     // how come we have to modify the original? speed? what if they need to old one
+    // why have I gotten so many off by one errors?
 
     public static <T extends Comparable<T>> void selectionSort(T[] items) {
         for (int i = 0; i < items.length; i++) {
@@ -28,9 +29,13 @@ public class SearchAndSort {
 
     public static <T extends Comparable<T>> void bubbleSort(T[] items) {
         for (int i = 0; i < items.length - 1; i++) {
-            for (int k = 0; k < items.length - (1 + i); k++) {
-
+           
+            for (int k = 0; k < items.length - (i); k++) {
+                if(k-1 != -1 && leftLessThanRight(items[k-1], items[k])){
+                    swap(items, k-1, k);
+                }
             }
+            
         }
 
     }
