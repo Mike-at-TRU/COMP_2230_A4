@@ -95,7 +95,18 @@ public class SearchAndSort {
     }
 
     private static <T extends Comparable<T>> void pickPivot(T[] items, int low, int high){
-        //I see, currently me...
+        if(high-low > 4){
+        int middle = (int) Math.ceil((low+high)/2);
+            if((high > middle && middle > low) || (high < middle && middle < low)){
+                //if middle is the middle
+                swap(items, high, middle);
+            }
+            if((high > low && low > middle) || (high < low && low < middle)){
+                //if low is the middle
+                swap(items, high, low);
+            }
+            //if high is middle do nothing
+    }
 
     }
 }
