@@ -44,8 +44,40 @@ public class SearchAndSort {
         quickSort(items, 0, items.length-1);
     }
 
-    public static <T extends Comparable<T>> void quickSort(T[] items, int min, int max){
+    public static <T extends Comparable<T>> void quickSort(T[] items, int low, int high){
+        if(low < high){
+            //pivot -> part of partitioning
+            //partitioning
 
+            int piviotIndex = partition(items, low, high);
+
+            //recurse
+            //left
+            quickSort(items, low,piviotIndex-1);
+            //right
+            quickSort(items, piviotIndex +1, high);
+        }
+
+    }
+
+    private static <T extends Comparable<T>> int partition(T[] items, int low, int high){
+        //pick piviot
+        //whose boring and just uses the last index?
+        pickPivot(items, low, high);
+        T piviot = items[high];
+        int indexOfRightMostElementLessThanPiviot = low -1;
+
+        for(int currentIndex = low; currentIndex<high; currentIndex++){
+
+            if(leftLessThanRight(piviot, items[currentIndex])){
+                indexOfRightMostElementLessThanPiviot++;
+                swap(items, indexOfRightMostElementLessThanPiviot, currentIndex);
+            }
+        }
+        indexOfRightMostElementLessThanPiviot++;
+        swap(items, high, indexOfRightMostElementLessThanPiviot);
+
+        return indexOfRightMostElementLessThanPiviot;
     }
 
     public static <T extends Comparable<T>> void mergeSort(T[] items) {
@@ -60,5 +92,10 @@ public class SearchAndSort {
 
     private static <T extends Comparable<T>> boolean leftLessThanRight(T left, T right) {
         return left.compareTo(right) > 0;
+    }
+
+    private static <T extends Comparable<T>> void pickPivot(T[] items, int low, int high){
+        //I see, currently me...
+
     }
 }
