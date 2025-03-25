@@ -100,7 +100,7 @@ public class SearchAndSort {
             int indexOfRightLowestNotSorted = mid + 1;
             boolean sorted = false;
             while (!sorted) {
-                if (leftLessThanRight(items[indexOfLeftLowestNotSorted], items[indexOfRightLowestNotSorted])) {
+                if (leftLessThanRight(items[indexOfRightLowestNotSorted], items[indexOfLeftLowestNotSorted])) {
                     if (indexOfLeftLowestNotSorted + 1 < mid) {
                         indexOfLeftLowestNotSorted++;
                     } else {
@@ -108,7 +108,7 @@ public class SearchAndSort {
                     }
                 } else {
                     swap(items, indexOfLeftLowestNotSorted, indexOfRightLowestNotSorted);
-                    if (indexOfRightLowestNotSorted + 1 != high) {
+                    if (indexOfRightLowestNotSorted + 1 < high) {
                         indexOfRightLowestNotSorted++;
                     } else {
                         sorted = true;
