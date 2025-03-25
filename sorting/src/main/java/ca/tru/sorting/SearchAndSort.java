@@ -103,15 +103,18 @@ public class SearchAndSort {
                 if (leftLessThanRight(items[indexOfLeftLowestNotSorted], items[indexOfRightLowestNotSorted])) {
                     if (indexOfLeftLowestNotSorted + 1 < mid) {
                         indexOfLeftLowestNotSorted++;
+                    } else {
+                        sorted = true;
                     }
                 } else {
                     swap(items, indexOfLeftLowestNotSorted, indexOfRightLowestNotSorted);
-                    indexOfRightLowestNotSorted++;
+                    if (indexOfRightLowestNotSorted + 1 != high) {
+                        indexOfRightLowestNotSorted++;
+                    } else {
+                        sorted = true;
+                    }
                 }
 
-                if (indexOfLeftLowestNotSorted == mid + 1) {
-                    sorted = true;
-                }
             }
         }
 
